@@ -211,7 +211,6 @@ public class DriveRouteActivity extends Activity implements OnMapClickListener,
             ToastUtil.showerror(this.getApplicationContext(), errorCode);
         }
 
-
     }
 
     @Override

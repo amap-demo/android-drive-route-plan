@@ -21,8 +21,11 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="343dd29bdae32ec8f7575b80b7afc2f1" />
-        <activity android:name=".DriveRouteActivity">
+            android:value="您的key" />
+
+        <activity
+            android:name=".DriveRouteActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
