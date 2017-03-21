@@ -37,7 +37,7 @@ import com.amap.driveroute.overlay.DrivingRouteOverlay;
 
 
 public class DriveRouteActivity extends Activity implements OnMapClickListener,
-        OnMarkerClickListener, OnInfoWindowClickListener, InfoWindowAdapter, OnRouteSearchListener, OnClickListener {
+        OnMarkerClickListener, OnInfoWindowClickListener, InfoWindowAdapter, OnRouteSearchListener, OnClickListener, AMap.OnMapLoadedListener {
     private AMap aMap;
     private MapView mapView;
     private Context mContext;
@@ -65,17 +65,6 @@ public class DriveRouteActivity extends Activity implements OnMapClickListener,
         mTrafficView = (ImageView) findViewById(R.id.map_traffic);
         mTrafficView.setOnClickListener(this);
         init();
-        setfromandtoMarker();
-        searchRouteResult(ROUTE_TYPE_DRIVE, RouteSearch.DrivingDefault);
-    }
-
-    private void setfromandtoMarker() {
-        aMap.addMarker(new MarkerOptions()
-                .position(AMapUtil.convertToLatLng(mStartPoint))
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.start)));
-        aMap.addMarker(new MarkerOptions()
-                .position(AMapUtil.convertToLatLng(mEndPoint))
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.end)));
     }
 
     /**
@@ -98,6 +87,7 @@ public class DriveRouteActivity extends Activity implements OnMapClickListener,
      * 注册监听
      */
     private void registerListener() {
+        aMap.setOnMapLoadedListener(DriveRouteActivity.this);
         aMap.setOnMapClickListener(DriveRouteActivity.this);
         aMap.setOnMarkerClickListener(DriveRouteActivity.this);
         aMap.setOnInfoWindowClickListener(DriveRouteActivity.this);
@@ -132,7 +122,6 @@ public class DriveRouteActivity extends Activity implements OnMapClickListener,
     @Override
     public void onMapClick(LatLng arg0) {
         // TODO Auto-generated method stub
-
     }
 
     /**
@@ -280,7 +269,6 @@ public class DriveRouteActivity extends Activity implements OnMapClickListener,
     @Override
     public void onRideRouteSearched(RideRouteResult arg0, int arg1) {
         // TODO Auto-generated method stub
-
     }
 
     @Override
@@ -294,7 +282,11 @@ public class DriveRouteActivity extends Activity implements OnMapClickListener,
                 aMap.setTrafficEnabled(true);
             }
         }
+    }
 
+    @Override
+    public void onMapLoaded() {
+        searchRouteResult(ROUTE_TYPE_DRIVE, RouteSearch.DRIVING_SINGLE_DEFAULT);
     }
 }
 
