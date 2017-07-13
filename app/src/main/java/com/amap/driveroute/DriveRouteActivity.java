@@ -37,7 +37,7 @@ import com.amap.driveroute.overlay.DrivingRouteOverlay;
 
 
 public class DriveRouteActivity extends Activity implements OnMapClickListener,
-        OnMarkerClickListener, OnInfoWindowClickListener, InfoWindowAdapter, OnRouteSearchListener, OnClickListener, AMap.OnMapLoadedListener {
+        OnMarkerClickListener, OnInfoWindowClickListener, OnRouteSearchListener, OnClickListener, AMap.OnMapLoadedListener {
     private AMap aMap;
     private MapView mapView;
     private Context mContext;
@@ -91,20 +91,7 @@ public class DriveRouteActivity extends Activity implements OnMapClickListener,
         aMap.setOnMapClickListener(DriveRouteActivity.this);
         aMap.setOnMarkerClickListener(DriveRouteActivity.this);
         aMap.setOnInfoWindowClickListener(DriveRouteActivity.this);
-        aMap.setInfoWindowAdapter(DriveRouteActivity.this);
 
-    }
-
-    @Override
-    public View getInfoContents(Marker arg0) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public View getInfoWindow(Marker arg0) {
-        // TODO Auto-generated method stub
-        return null;
     }
 
     @Override
